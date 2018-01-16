@@ -26,7 +26,6 @@ $products = array(
 			and send this information to advertisers to display relevant content of interest to you! Also new is a 3D holoraphic display with
 			motion control, so you can interact with virtual objects in real space.'
 	)
-	
 );
 
 ?>
