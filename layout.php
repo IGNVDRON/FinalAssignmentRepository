@@ -27,11 +27,11 @@ $header = <<<HTML
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#" class="active">domoj</a></li>
         <li><a href="#">Support</a></li>
         <li><a href="#">My Account</a></li>
-        <li><a href="#">The Store</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="?lang=en">En</a></li>
+        <li><a href="?lang=ru">Ru</a></li>
       </ul>
     </div>
     <!-- End Navigation -->

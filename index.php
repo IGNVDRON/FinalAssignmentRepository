@@ -1,11 +1,22 @@
 <?php
 session_start();
+error_reporting(0);
 
-/*
-File:		index.php
-Author:		Levi Meahan
-Purpose:	View products
-*/
+// Languages start
+$lang = $_GET['lang'];
+$langArray = array('en','lv','ru');
+$found = false;
+
+if (in_array($lang, $langArray))
+	$found = true;
+
+if (!$found)
+	$lang = 'en';
+
+$xml = simplexml_load_file('languages.xml') or die("xml not found!");
+$title = $xml->title->$lang;
+$text = $xml->text->$lang;
+// End of languages
 
 require("products.php");
 require("layout.php");
