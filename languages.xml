@@ -1,0 +1,14 @@
+<?xml version='1.0" encoding="utf-8"?>
+<root>
+	<title>
+		<en>Hello</en>
+		<lv>Labdien</lv>
+		<ru>Здрасти</ru>
+	</title>
+	
+	<text>
+		<en>English text.</en>
+		<lv>Latviešu teksts.</lv>
+		<ru>Русский текст.</ru>
+	</text>
+</root>
