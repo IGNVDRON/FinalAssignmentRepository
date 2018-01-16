@@ -17,9 +17,9 @@ $header = <<<HTML
 <div class="shell">
   <!-- Header -->
   <div id="header">
-    <h1 id="logo"><a href="#">shoparound</a></h1>
+    <h1 id="logo"><a href="#">Shonline</a></h1>
     <!-- Cart -->
-    <div id="cart"> <a href="./index.php?view_cart=1'" class="cart-link">Your Shopping Cart</a>
+    <div id="cart"><a href="./index.php?view_cart=1'" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
       <div class="cl">&nbsp;</div>
       <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>$250.99</strong></span>
 	</div>
@@ -27,7 +27,7 @@ $header = <<<HTML
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="#" class="active">domoj</a></li>
+        <li><a href="#" class="active">Home</a></li>
         <li><a href="#">Support</a></li>
         <li><a href="#">My Account</a></li>
         <li><a href="?lang=en">En</a></li>
@@ -99,8 +99,8 @@ $footer = <<<HTML
   <!-- End Side Full -->
   <!-- Footer -->
   <div id="footer">
-    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </p>
-    <p class="right"> &copy; 2010 Shop Around. Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </p>
+    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
+    <p class="right"> &copy; 2018 Shonline. Design by Ignat, Dmitry</p>
   </div>
   <!-- End Footer -->
 </div>

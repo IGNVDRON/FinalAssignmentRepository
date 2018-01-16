@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 // Languages start
 $lang = $_GET['lang'];
@@ -72,7 +72,6 @@ if(isset($_POST['update_cart'])) {
 
 // **DISPLAY PAGE**
 echo $header;
-
 echo $message;
 
 // View a product

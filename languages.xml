@@ -15,4 +15,13 @@
 		<ru>Главная</ru>
 	</home>
 	
+	<support>
+		<en>Support</en>
+		<ru>Поддержка</ru>
+	</support>
+	
+	<account>
+		<en>My Account</en>
+		<ru>Мой аккаунт</ru>
+	</account>
 </root>
