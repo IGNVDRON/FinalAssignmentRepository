@@ -4,7 +4,7 @@ $header = <<<HTML
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Shop Around</title>
+<title>Shonline</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <!--[if lte IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
@@ -17,9 +17,9 @@ $header = <<<HTML
 <div class="shell">
   <!-- Header -->
   <div id="header">
-    <h1 id="logo"><a href="#">Shonline</a></h1>
+    <h1 id="logo"><a href='./index.php'>Shonline</a></h1>
     <!-- Cart -->
-    <div id="cart"><a href="./index.php?view_cart=1'" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
+    <div id="cart"><a href="./index.php?view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
       <div class="cl">&nbsp;</div>
       <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>$250.99</strong></span>
 	</div>
@@ -53,10 +53,10 @@ $footer = <<<HTML
         <h2>Categories <span></span></h2>
         <div class="box-content">
           <ul>
-            <li><a href="#">Category 1</a></li>
-            <li><a href="#">Category 2</a></li>
-            <li><a href="#">Category 3</a></li>
-            <li class="last"><a href="#">Category 4</a></li>
+            <li><a href="./index.php?category=all">All prices</a></li>
+            <li><a href="./index.php?category=clothing">Clothing</a></li>
+            <li><a href="./index.php?category=phones">Cell phones</a></li>
+            <li class="last"><a href="./index.php?category=accessories">Accessories</a></li>
           </ul>
         </div>
       </div>
@@ -69,6 +69,8 @@ $footer = <<<HTML
   <!-- Side Full -->
   <div class="side-full">
     <!-- End More Products -->
+	
+	
     <!-- Text Cols -->
     <div class="cols">
       <div class="cl">&nbsp;</div>
@@ -95,6 +97,8 @@ $footer = <<<HTML
       <div class="cl">&nbsp;</div>
     </div>
     <!-- End Text Cols -->
+	
+	
   </div>
   <!-- End Side Full -->
   <!-- Footer -->
