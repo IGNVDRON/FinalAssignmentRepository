@@ -10,7 +10,7 @@ $products = array(
 		'name' => 'Sneakers',
 		'price' => 79.99,
 		'category' => 'Clothing',
-		'description' => 'Black sneakers. Good for walking or athletic activity.'
+		'description' => 'Black sneakers. Good for walking.'
 	),
 	2 => array(
 		'name' => 'Armani watches',
@@ -22,14 +22,14 @@ $products = array(
 		'name' => 'Samsung Galaxy S8',
 		'price' => 799.99,
 		'category' => 'Phones',
-		'description' => ''
+		'description' => 'Latest product from Samsung.'
 	),
 	4 => array(
 		'name' => 'Iphone X',
 		'price' => 1299.99,
 		'category' => 'Phones',
-		'description' => 'Latest product from Apple'
-	),
+		'description' => 'Latest product from Apple.'
+	)
 	
 );
 

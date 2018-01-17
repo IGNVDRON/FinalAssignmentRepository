@@ -11,24 +11,29 @@ if (in_array($lang, $langArray))
 	$found = true;
 
 if (!$found)
-	$lang = 'en';
+	$lang = 'ru';
 
 $xml = simplexml_load_file('languages.xml') or die("xml not found!");
-$title = $xml->title->$lang;
-$text = $xml->text->$lang;
+
+// Translations
 $home = $xml->home->$lang;
 $support = $xml->support->$lang;
 $account = $xml->account->$lang;
+
 $categories = $xml->categories->$lang;
 $cat_all = $xml->cat_all->$lang;
 $cat_clothing = $xml->cat_clothing->$lang;
 $cat_phones = $xml->cat_phones->$lang;
 $cat_accessories = $xml->cat_accessories->$lang;
+
 $authors = $xml->authors->$lang;
 
-$xml = simplexml_load_file('languages.xml') or die("xml not found!");
-$title = $xml->title->$lang;
-$text = $xml->text->$lang;
+$tab_name = $xml->tab_name->$lang;
+$tab_price = $xml->tab_price->$lang;
+$tab_category = $xml->tab_category->$lang;
+$tab_quantity = $xml->tab_quantity->$lang;
+$tab_cost = $xml->tab_cost->$lang;
+// End of translations
 // End of languages
 
 require("products.php");
@@ -185,10 +190,10 @@ else if(isset($_GET['view_cart'])) {
 		echo "<form action='./index.php?view_cart=1' method='post'>
 		<table style='width:90%;' cellspacing='0'>
 				<tr>
-					<th style='border-bottom:1px solid #000000;'>Name</th>
-					<th style='border-bottom:1px solid #000000;'>Price</th>
-					<th style='border-bottom:1px solid #000000;'>Category</th>
-					<th style='border-bottom:1px solid #000000;'>Quantity</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_name ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_price ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_category ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_quantity ."</th>
 				</tr>";
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
@@ -230,12 +235,12 @@ else if(isset($_GET['checkout'])) {
 		echo "<form action='./index.php?checkout=1' method='post'>
 		<table style='width:90%;' cellspacing='0'>
 				<tr>
-					<th style='border-bottom:1px solid #000000;'>Name</th>
-					<th style='border-bottom:1px solid #000000;'>Item Price</th>
-					<th style='border-bottom:1px solid #000000;'>Quantity</th>
-					<th style='border-bottom:1px solid #000000;'>Cost</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_name ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_price ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_quantity ."</th>
+					<th style='border-bottom:1px solid #000000;'>". $tab_cost ."</th>
 				</tr>";
-				
+
 				$total_price = 0;
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
@@ -266,9 +271,9 @@ else {
 	// Display site links
 	echo "<table style='width:90%;' cellspacing='0'>";
 	echo "<tr>
-		<th style='border-bottom:1px solid #000000;'>Name</th>
-		<th style='border-bottom:1px solid #000000;'>Price</th>
-		<th style='border-bottom:1px solid #000000;'>Category</th>
+		<th style='border-bottom:1px solid #000000;'>". $tab_name ."</th>
+		<th style='border-bottom:1px solid #000000;'>". $tab_price ."</th>
+		<th style='border-bottom:1px solid #000000;'>". $tab_category ."</th>
 	</tr>";
 
 

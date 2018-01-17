@@ -50,6 +50,32 @@
 		<ru>Аксесуары</ru>
 	</cat_accessories>
 	
+
+	<tab_name>
+		<en>Name</en>
+		<ru>Название</ru>
+	</tab_name>
+	
+	<tab_price>
+		<en>Price</en>
+		<ru>Цена</ru>
+	</tab_price>
+	
+	<tab_category>
+		<en>Category</en>
+		<ru>Категория</ru>
+	</tab_category>
+	
+	<tab_quantity>
+		<en>Quanity</en>
+		<ru>Количество</ru>
+	</tab_quantity>
+
+	<tab_cost>
+		<en>Cost</en>
+		<ru>Стоимость</ru>
+	</tab_cost>
+
 	<authors>
 		<en>Authors: Ignat Baldashevich, Dmitry Gusarov</en>
 		<ru>Авторы: Игнат Балдашевич, Дмитрий Гусаров</ru>
