@@ -11,7 +11,7 @@ if (in_array($lang, $langArray))
 	$found = true;
 
 if (!$found)
-	$lang = 'ru';
+	$lang = 'en';
 
 $xml = simplexml_load_file('languages.xml') or die("xml not found!");
 
@@ -37,7 +37,17 @@ $tab_cost = $xml->tab_cost->$lang;
 // End of languages
 
 require("products.php");
-require("layout.php");
+//require("layout.php");
+
+
+
+// Registration and login
+require ("db.php");
+$data = $_POST;
+// End of registration and login
+
+
+
 
 // Initialize cart
 if(!isset($_SESSION['shopping_cart'])) {
@@ -108,17 +118,14 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <h1 id="logo"><a href="./index.php">Shonline</a></h1>
     <!-- Cart -->
     <div id="cart"><a href="./index.php?view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
-      <div class="cl">&nbsp;</div>
-      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: '. $total_price=123 .'<strong>
 	</strong></span>
 	</div>
     <!-- End Cart -->
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="#" class="active">'. $home .'</a></li>
-        <li><a href="#">'. $support .'</a></li>
-        <li><a href="#">'. $account .'</a></li>
+        <li><a href="index.php">'. $home .'</a></li>
+        <li><a href="./index.php?myaccount=1">'. $account .'</a></li>
         <li><a href="?lang=en">En</a></li>
         <li><a href="?lang=ru">Ru</a></li>
       </ul>
@@ -263,6 +270,127 @@ else if(isset($_GET['checkout'])) {
 
 
 
+else if(isset($_GET['myaccount'])) {
+
+// Login
+if( isset($data['do_login']) ){ 
+		$erros = array();
+		$user = R::findOne('users', 'login = ?', array($data['login']
+		));
+		if( $user ) {			// login exists
+			if( password_verify($data['password'], $user->password) ) {
+				//all ok, sign in user
+				$_SESSION['logged_user'] = $user;
+				echo '<div style="color: green;">Congratulations! You are authorized!</div><hr>';
+				
+		} else {
+			$errors[] = 'Invalid password';
+		}
+		} else {
+			 $errors[] = 'User with that login not found'; 
+		}
+	if( !empty($errors) ){
+		 echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+	}
+}
+// End of login
+
+// Registration
+if( isset($data['do_signup']) ){
+	  // registration here	
+	  
+	  if ( trim($data['login']) == '' ) 
+	  {
+		$errors[] = 'Enter the login';
+	  }
+	  
+	  if ( trim($data['email']) == '' ) 
+	  {
+		$errors[] = 'Enter the email';
+	  }
+	  
+	  if ( $data['password'] == '' ) 
+	  {
+		$errors[] = 'Enter the password';
+	  }
+	  
+	  if ( trim($data['password_2']) != $data['password'] ) 
+	  {
+		$errors[] = 'Repeated password entered incorrectly';
+	  }
+	  
+	    if ( R::count('users', "login = ?", array($data['login'])) > 0 ) 
+	  {
+		$errors[] = 'User with that login already exists';
+	  }
+	  
+	    if ( R::count('users', "email = ?", array($data['email'])) > 0 ) 
+	  {
+		$errors[] = 'User with that email already exists';
+	  }
+	  
+	  if( empty($errors) )
+	  {
+		 //all ok
+		 $user = R::dispense('users');
+		 $user->login = $data['login'];
+		 $user->email = $data['email'];
+		 $user->password = password_hash($data['password'], PASSWORD_DEFAULT); // bcrypt password hash
+		 R::store($user);
+		 
+		 echo '<div style="color: green;">Successfully registered</div><hr>';
+		 
+	  } else
+	  {
+		  echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+	  }
+}
+// End of registration
+
+// Show login and registration fields
+	echo '
+<div class="cols">
+<div class="col">
+<form action= "index.php?myaccount=1" method="POST">
+	<p>
+	<p><strong>Login</strong>:</p>
+	<input type="text" name="login" value=>
+	</p>
+	<p>
+	<p><strong>Password</strong>:</p>
+	<input type="password" name="password" value=>
+	</p>
+	<p>
+		<button type="sumbit" name="do_login">Sign in</button>
+	</p>
+</form>
+</div>
+<div class="col">
+<form action="index.php?myaccount=1" method="POST">
+	<p><p><strong>Login</strong>:</p>
+	<input type="text" name="login" value="">
+	</p><p>
+	<p><strong>Email</strong>:</p>
+	<input type="email" name="email" value="">
+	</p><p>
+	<p><strong>Password</strong>:</p>
+	<input type="password" name="password" value="">
+	</p><p>
+	<p><strong>Repeat password</strong>:</p>
+	<input type="password" name="password_2" value="">
+	</p><p>
+	<button type="sumbit" name="do_signup">Registration</button>
+	</p>
+</form>
+</div>
+</div>
+';
+// End of login and registration fields
+}
+
+
+
+
 
 
 
@@ -287,6 +415,11 @@ else {
 	}
 	echo "</table>";
 }
+
+
+
+
+
 
 
 
@@ -343,7 +476,7 @@ echo '</div>
   <!-- End Side Full -->
   <!-- Footer -->
   <div id="footer">
-    <p class="left"> <a href="#">'. $home .'</a> <span>|</span> <a href="#">'. $support .'</a> <span>|</span> <a href="#">'. $account .'</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
+    <p class="left"> <a href="index.php">'. $home .'</a> <span>|</span> <a href="?myaccount=1">'. $account .'</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
     <p class="right"> &copy; 2018 Shonline. '. $authors .'</p>
   </div>
   <!-- End Footer -->

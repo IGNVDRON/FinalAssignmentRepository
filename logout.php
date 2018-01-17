@@ -5,6 +5,5 @@
 	
 	header('Location: /');
 	
-	?>
-	
+?>
 	

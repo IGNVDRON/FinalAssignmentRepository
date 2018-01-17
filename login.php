@@ -33,7 +33,7 @@
 	}
 	
 	}
-	?>
+?>
 	
 	<form action= "login.php" method="POST">
 	
@@ -48,7 +48,7 @@
 	</p>
 	
 	<p>
-	<button type="sumbit" name="do_login">Sign in</button>
+		<button type="sumbit" name="do_login">Sign in</button>
 	</p>
 	
-	</form>
+</form>

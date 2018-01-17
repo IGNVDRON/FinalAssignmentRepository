@@ -82,5 +82,4 @@
 	<p>
 	<button type="sumbit" name="do_signup">Registration</button>
 	</p>
-	
 </form>
