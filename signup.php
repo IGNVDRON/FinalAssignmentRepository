@@ -56,7 +56,7 @@
 	}
 ?>
 
-<form action="/shop/signup.php" method="POST">
+<form action="/FinalAssignmentRepository/signup.php" method="POST">
 	
 	<p>
 	<p><strong>Login</strong>:</p>
