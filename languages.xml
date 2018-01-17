@@ -24,4 +24,34 @@
 		<en>My Account</en>
 		<ru>Мой аккаунт</ru>
 	</account>
+	
+	<categories>
+		<en>Categories</en>
+		<ru>Категории</ru>
+	</categories>
+	
+	<cat_all>
+		<en>All items</en>
+		<ru>Все товары</ru>
+	</cat_all>
+	
+	<cat_clothing>
+		<en>Clothing</en>
+		<ru>Одежда</ru>
+	</cat_clothing>
+	
+	<cat_phones>
+		<en>Cell Phones</en>
+		<ru>Мобильные телефоны</ru>
+	</cat_phones>
+	
+	<cat_accessories>
+		<en>Accessories</en>
+		<ru>Аксесуары</ru>
+	</cat_accessories>
+	
+	<authors>
+		<en>Authors: Ignat Baldashevich, Dmitry Gusarov</en>
+		<ru>Авторы: Игнат Балдашевич, Дмитрий Гусаров</ru>
+	</authors>
 </root>

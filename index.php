@@ -4,7 +4,7 @@ session_start();
 
 // Languages start
 $lang = $_GET['lang'];
-$langArray = array('en','lv','ru');
+$langArray = array('en','ru');
 $found = false;
 
 if (in_array($lang, $langArray))
@@ -12,6 +12,19 @@ if (in_array($lang, $langArray))
 
 if (!$found)
 	$lang = 'en';
+
+$xml = simplexml_load_file('languages.xml') or die("xml not found!");
+$title = $xml->title->$lang;
+$text = $xml->text->$lang;
+$home = $xml->home->$lang;
+$support = $xml->support->$lang;
+$account = $xml->account->$lang;
+$categories = $xml->categories->$lang;
+$cat_all = $xml->cat_all->$lang;
+$cat_clothing = $xml->cat_clothing->$lang;
+$cat_phones = $xml->cat_phones->$lang;
+$cat_accessories = $xml->cat_accessories->$lang;
+$authors = $xml->authors->$lang;
 
 $xml = simplexml_load_file('languages.xml') or die("xml not found!");
 $title = $xml->title->$lang;
@@ -71,7 +84,6 @@ if(isset($_POST['update_cart'])) {
 
 
 // **DISPLAY PAGE**
-
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -92,17 +104,16 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <!-- Cart -->
     <div id="cart"><a href="./index.php?view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
       <div class="cl">&nbsp;</div>
-      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>';
-	  echo '$total_price';
-	echo '</strong></span>
+      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: '. $total_price=123 .'<strong>
+	</strong></span>
 	</div>
     <!-- End Cart -->
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">My Account</a></li>
+        <li><a href="#" class="active">'. $home .'</a></li>
+        <li><a href="#">'. $support .'</a></li>
+        <li><a href="#">'. $account .'</a></li>
         <li><a href="?lang=en">En</a></li>
         <li><a href="?lang=ru">Ru</a></li>
       </ul>
@@ -115,7 +126,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <div class="cl">&nbsp;</div>
     <!-- Content -->
     <div id="content">';
-	
+
 echo $message;
 
 // View a product
@@ -128,9 +139,8 @@ if(isset($_GET['view_product'])) {
 			<a href='./index.php'>Shonline</a> &gt; <a href='./index.php?category=". $products[$product_id]['category'] ."'>" . 
 			$products[$product_id]['category'] . "</a></p>";
 		
-		
 		// Display product
-		echo "<p style='font-size: 16px;'>
+		echo "<p>
 			<span style='font-weight:bold;'>" . $products[$product_id]['name'] . "</span><br />
 			<span>$" . $products[$product_id]['price'] . "</span><br />
 			<span>" . $products[$product_id]['description'] . "</span><br />
@@ -151,6 +161,12 @@ if(isset($_GET['view_product'])) {
 		echo "Invalid product!";
 	}
 }
+
+
+
+
+
+
 // View cart
 else if(isset($_GET['view_cart'])) {
 	// Display site links
@@ -167,7 +183,7 @@ else if(isset($_GET['view_cart'])) {
 	}
 	else {
 		echo "<form action='./index.php?view_cart=1' method='post'>
-		<table style='width:500px;' cellspacing='0'>
+		<table style='width:90%;' cellspacing='0'>
 				<tr>
 					<th style='border-bottom:1px solid #000000;'>Name</th>
 					<th style='border-bottom:1px solid #000000;'>Price</th>
@@ -196,6 +212,12 @@ else if(isset($_GET['view_cart'])) {
 	}
 }
 
+
+
+
+
+
+
 // Checkount
 else if(isset($_GET['checkout'])) {
 	// Display site links
@@ -206,7 +228,7 @@ else if(isset($_GET['checkout'])) {
 	}
 	else {
 		echo "<form action='./index.php?checkout=1' method='post'>
-		<table style='width:500px;' cellspacing='0'>
+		<table style='width:90%;' cellspacing='0'>
 				<tr>
 					<th style='border-bottom:1px solid #000000;'>Name</th>
 					<th style='border-bottom:1px solid #000000;'>Item Price</th>
@@ -233,10 +255,16 @@ else if(isset($_GET['checkout'])) {
 		
 	}
 }
+
+
+
+
+
+
 // View all products
 else {
 	// Display site links
-	echo "<table style='width:500px;' cellspacing='0'>";
+	echo "<table style='width:90%;' cellspacing='0'>";
 	echo "<tr>
 		<th style='border-bottom:1px solid #000000;'>Name</th>
 		<th style='border-bottom:1px solid #000000;'>Price</th>
@@ -255,19 +283,24 @@ else {
 	echo "</table>";
 }
 
+
+
+
+
+
 //echo $footer;
 echo '</div>
     <!-- End Content -->
     <!-- Sidebar -->
     <div id="sidebar">
       <div class="box categories">
-        <h2>Categories <span></span></h2>
+        <h2>'. $categories .'<span></span></h2>
         <div class="box-content">
           <ul>
-            <li><a href="./index.php?category=all">All prices</a></li>
-            <li><a href="./index.php?category=clothing">Clothing</a></li>
-            <li><a href="./index.php?category=phones">Cell phones</a></li>
-            <li class="last"><a href="./index.php?category=accessories">Accessories</a></li>
+            <li><a href="./index.php?category=All">'. $cat_all .'</a></li>
+            <li><a href="./index.php?category=Clothing">'. $cat_clothing .'</a></li>
+            <li><a href="./index.php?category=Phones">'. $cat_phones .'</a></li>
+            <li class="last"><a href="./index.php?category=Accessories">'. $cat_accessories .'</a></li>
           </ul>
         </div>
       </div>
@@ -281,29 +314,20 @@ echo '</div>
   <div class="side-full">
     <!-- End More Products -->
 	
-	
     <!-- Text Cols -->
     <div class="cols">
       <div class="cl">&nbsp;</div>
       <div class="col">
         <h3 class="ico ico1">Worldwide delivery</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
-        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
       </div>
       <div class="col">
         <h3 class="ico ico2">Free calls to operators</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
-        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
       </div>
       <div class="col">
         <h3 class="ico ico3">Weekly gifts</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
-        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
       </div>
       <div class="col col-last">
         <h3 class="ico ico4">Shop online</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
-        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
       </div>
       <div class="cl">&nbsp;</div>
     </div>
@@ -314,8 +338,8 @@ echo '</div>
   <!-- End Side Full -->
   <!-- Footer -->
   <div id="footer">
-    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
-    <p class="right"> &copy; 2018 Shonline. Design by Ignat, Dmitry</p>
+    <p class="left"> <a href="#">'. $home .'</a> <span>|</span> <a href="#">'. $support .'</a> <span>|</span> <a href="#">'. $account .'</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
+    <p class="right"> &copy; 2018 Shonline. '. $authors .'</p>
   </div>
   <!-- End Footer -->
 </div>

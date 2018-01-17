@@ -17,6 +17,11 @@ $text = $xml->text->$lang;
 $home = $xml->home->$lang;
 $support = $xml->support->$lang;
 $account = $xml->account->$lang;
+$categories = $xml->categories->$lang;
+$cat_all = $xml->cat_all->$lang;
+$cat_clothing = $xml->cat_clothing->$lang;
+$cat_phones = $xml->cat_phones->$lang;
+$cat_accessories = $xml->cat_accessories->$lang;
 ?>
 
 <DIV><?php echo $title;?></DIV>
@@ -24,6 +29,7 @@ $account = $xml->account->$lang;
 <DIV><?php echo $home;?></DIV>
 <DIV><?php echo $support;?></DIV>
 <DIV><?php echo $account;?></DIV>
+<DIV><?php echo $categories;?></DIV>
 <DIV style="margin-top:50px;">
 	Languages:
 	<a href="?lang=en">En</a>
