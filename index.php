@@ -92,7 +92,9 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <!-- Cart -->
     <div id="cart"><a href="./index.php?view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
       <div class="cl">&nbsp;</div>
-      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>$250.99</strong></span>
+      <span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>';
+	  echo '$total_price';
+	echo '</strong></span>
 	</div>
     <!-- End Cart -->
     <!-- Navigation -->
@@ -123,7 +125,7 @@ if(isset($_GET['view_product'])) {
 	if(isset($products[$product_id])) {
 		// Display site links
 		echo "<p>
-			<a href='./index.php'>Shonline</a> &gt; <a href='./index.php'>" . 
+			<a href='./index.php'>Shonline</a> &gt; <a href='./index.php?category=". $products[$product_id]['category'] ."'>" . 
 			$products[$product_id]['category'] . "</a></p>";
 		
 		
@@ -193,6 +195,7 @@ else if(isset($_GET['view_cart'])) {
 		
 	}
 }
+
 // Checkount
 else if(isset($_GET['checkout'])) {
 	// Display site links
@@ -233,9 +236,6 @@ else if(isset($_GET['checkout'])) {
 // View all products
 else {
 	// Display site links
-
-	echo "<h3>Our Products</h3>";
-
 	echo "<table style='width:500px;' cellspacing='0'>";
 	echo "<tr>
 		<th style='border-bottom:1px solid #000000;'>Name</th>

@@ -21,13 +21,13 @@ $products = array(
 	3 => array(
 		'name' => 'Samsung Galaxy S8',
 		'price' => 799.99,
-		'category' => 'Cell Phones',
+		'category' => 'Phones',
 		'description' => ''
 	),
 	4 => array(
 		'name' => 'Iphone X',
 		'price' => 1299.99,
-		'category' => 'Cell Phones',
+		'category' => 'Phones',
 		'description' => 'Latest product from Apple'
 	),
 	
