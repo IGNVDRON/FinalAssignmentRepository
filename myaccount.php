@@ -9,6 +9,6 @@
 	<hr>
 	<a href="shop/logout.php">Sign out</a>
 	<?php else : ?>
-	<a href="../shop/login.php">Authorization</a><br>
-	<a href="/shop/signup.php">Registration</a>
+	<a href="../FinalAssignmentRepository/login.php">Authorization</a><br>
+	<a href="/FinalAssignmentRepository/signup.php">Registration</a>
 	<?php endif; ?>

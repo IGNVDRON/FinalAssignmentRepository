@@ -16,7 +16,7 @@
 				//all ok, sign in user
 				
 				$_SESSION['logged_user'] = $user;
-				echo '<div style="color: green;">Authorized. You may go on the <a href="/shop/myaccount.php">title webpage</a> </div><hr>';
+				echo '<div style="color: green;">Authorized. You may go on the <a href="finalassignmentrepository/?lang=en#">title webpage</a> </div><hr>';
 				
 		} else {
 			
