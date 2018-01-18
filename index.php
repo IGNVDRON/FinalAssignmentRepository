@@ -1,9 +1,9 @@
 <?php
 session_start();
 //error_reporting(0);
+$total_price = 0;
 
 // Languages start
-
 $lang = $_GET['lang'];
 $langArray = array('en','ru');
 $found = false;
@@ -133,7 +133,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <!-- Cart -->
     <div id="cart"><a href="./index.php?lang='. $lang .'&view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
 		<div class="cl">&nbsp;</div>
-		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: . $total_price .<strong></strong></span>
+		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: '. $total_price .'<strong></strong></span>
 	</strong></span>
 	</div>
     <!-- End Cart -->
@@ -267,7 +267,7 @@ else if(isset($_GET['checkout'])) {
 					<th style='border-bottom:1px solid #000000;'>". $tab_cost ."</th>
 				</tr>";
 
-				$total_price = 0;
+				
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
 					
