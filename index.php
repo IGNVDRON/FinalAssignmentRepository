@@ -3,6 +3,7 @@ session_start();
 //error_reporting(0);
 
 // Languages start
+
 $lang = $_GET['lang'];
 $langArray = array('en','ru');
 $found = false;
@@ -117,6 +118,11 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<style>
+	table{
+		
+	}
+</style>
 </head>
 <body>
 <!-- Shell -->
@@ -127,7 +133,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <!-- Cart -->
     <div id="cart"><a href="./index.php?lang='. $lang .'&view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
 		<div class="cl">&nbsp;</div>
-		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>. $total_price .</strong></span>
+		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: . $total_price .<strong></strong></span>
 	</strong></span>
 	</div>
     <!-- End Cart -->
