@@ -82,6 +82,11 @@ if(isset($_POST['add_to_cart'])) {
 		$message = "Added to cart!";
 	}
 }
+
+
+
+
+
 // Update Cart
 if(isset($_POST['update_cart'])) {
 	$quantities = $_POST['quantity'];
@@ -96,6 +101,9 @@ if(isset($_POST['update_cart'])) {
 		$message = "Cart updated!<br />";
 	}
 }
+
+
+
 
 
 // **DISPLAY PAGE**
@@ -115,17 +123,17 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 <div class="shell">
   <!-- Header -->
   <div id="header">
-    <h1 id="logo"><a href="./index.php">Shonline</a></h1>
+    <h1 id="logo"><a href="./index.php?lang='. $lang .'">Shonline</a></h1>
     <!-- Cart -->
-    <div id="cart"><a href="./index.php?view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
+    <div id="cart"><a href="./index.php?lang='. $lang .'&view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
 	</strong></span>
 	</div>
     <!-- End Cart -->
     <!-- Navigation -->
     <div id="navigation">
       <ul>
-        <li><a href="index.php">'. $home .'</a></li>
-        <li><a href="./index.php?myaccount=1">'. $account .'</a></li>
+        <li><a href="index.php?lang='. $lang .'">'. $home .'</a></li>
+        <li><a href="./index.php?lang='. $lang .'&myaccount=1">'. $account .'</a></li>
         <li><a href="?lang=en">En</a></li>
         <li><a href="?lang=ru">Ru</a></li>
       </ul>
@@ -148,16 +156,19 @@ if(isset($_GET['view_product'])) {
 	if(isset($products[$product_id])) {
 		// Display site links
 		echo "<p>
-			<a href='./index.php'>Shonline</a> &gt; <a href='./index.php?category=". $products[$product_id]['category'] ."'>" . 
+			<a href='./index.php?lang=". $lang ."'>Shonline</a> &gt; <a href='./index.php?lang=". $lang ."&category=". $products[$product_id]['category'] ."'>" . 
 			$products[$product_id]['category'] . "</a></p>";
 		
+		
+		
+
 		// Display product
 		echo "<p>
 			<span style='font-weight:bold;'>" . $products[$product_id]['name'] . "</span><br />
 			<span>$" . $products[$product_id]['price'] . "</span><br />
 			<span>" . $products[$product_id]['description'] . "</span><br />
 			<p>
-				<form action='./index.php?view_product=$product_id' method='post'>
+				<form action='./index.php?lang=". $lang ."&view_product=$product_id' method='post'>
 					<select name='quantity'>
 						<option value='1'>1</option>
 						<option value='2'>2</option>
@@ -183,18 +194,18 @@ if(isset($_GET['view_product'])) {
 else if(isset($_GET['view_cart'])) {
 	// Display site links
 	echo "<p>
-		<a href='./index.php'>Shonline</a></p>";
+		<a href='./index.php?lang=". $lang ."'>Shonline</a></p>";
 	
 	echo "<h3>Your Cart</h3>
 	<p>
-		<a href='./index.php?empty_cart=1'>Empty Cart</a>
+		<a href='./index.php?lang=". $lang ."&empty_cart=1'>Empty Cart</a>
 	</p>";
 	
 	if(empty($_SESSION['shopping_cart'])) {
 		echo "Your cart is empty.<br />";
 	}
 	else {
-		echo "<form action='./index.php?view_cart=1' method='post'>
+		echo "<form action='./index.php?lang=". $lang ."&view_cart=1' method='post'>
 		<table style='width:90%;' cellspacing='0'>
 				<tr>
 					<th style='border-bottom:1px solid #000000;'>". $tab_name ."</th>
@@ -206,7 +217,7 @@ else if(isset($_GET['view_cart'])) {
 					$product_id = $product['product_id'];
 					
 					echo "<tr>
-						<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . 
+						<td style='border-bottom:1px solid #000000;'><a href='./index.php?lang=". $lang ."&view_product=$id'>" . 
 							$products[$product_id]['name'] . "</a></td>
 						<td style='border-bottom:1px solid #000000;'>$" . $products[$product_id]['price'] . "</td> 
 						<td style='border-bottom:1px solid #000000;'>" . $products[$product_id]['category'] . "</td>
@@ -218,7 +229,7 @@ else if(isset($_GET['view_cart'])) {
 			<input type='submit' name='update_cart' value='Update' />
 			</form>
 			<p>
-				<a href='./index.php?checkout=1'>Checkout</a>
+				<a href='./index.php?lang=". $lang ."&checkout=1'>Checkout</a>
 			</p>";
 		
 	}
@@ -239,7 +250,7 @@ else if(isset($_GET['checkout'])) {
 		echo "Your cart is empty.<br />";
 	}
 	else {
-		echo "<form action='./index.php?checkout=1' method='post'>
+		echo "<form action='./index.php?lang=". $lang ."&checkout=1' method='post'>
 		<table style='width:90%;' cellspacing='0'>
 				<tr>
 					<th style='border-bottom:1px solid #000000;'>". $tab_name ."</th>
@@ -255,7 +266,7 @@ else if(isset($_GET['checkout'])) {
 					
 					$total_price += $products[$product_id]['price'] * $product['quantity'];
 					echo "<tr>
-						<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . 
+						<td style='border-bottom:1px solid #000000;'><a href='./index.php?lang=". $lang ."&view_product=$id'>" . 
 							$products[$product_id]['name'] . "</a></td>
 						<td style='border-bottom:1px solid #000000;'>$" . $products[$product_id]['price'] . "</td> 
 						<td style='border-bottom:1px solid #000000;'>" . $product['quantity'] . "</td>
@@ -347,11 +358,11 @@ if( isset($data['do_signup']) ){
 }
 // End of registration
 
-// Show login and registration fields
+// Display login and registration fields
 	echo '
 <div class="cols">
 <div class="col">
-<form action= "index.php?myaccount=1" method="POST">
+<form action= "index.php?lang='. $lang .'&myaccount=1" method="POST">
 	<p>
 	<p><strong>Login</strong>:</p>
 	<input type="text" name="login" value=>
@@ -366,7 +377,7 @@ if( isset($data['do_signup']) ){
 </form>
 </div>
 <div class="col">
-<form action="index.php?myaccount=1" method="POST">
+<form action="index.php?lang='. $lang .'&myaccount=1" method="POST">
 	<p><p><strong>Login</strong>:</p>
 	<input type="text" name="login" value="">
 	</p><p>
@@ -408,7 +419,7 @@ else {
 	// Loop to display all products
 	foreach($products as $id => $product) {
 		echo "<tr>
-			<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . $product['name'] . "</a></td>
+			<td style='border-bottom:1px solid #000000;'><a href='./index.php?lang=". $lang ."&view_product=$id'>" . $product['name'] . "</a></td>
 			<td style='border-bottom:1px solid #000000;'>$" . $product['price'] . "</td> 
 			<td style='border-bottom:1px solid #000000;'>" . $product['category'] . "</td>
 		</tr>";
@@ -435,10 +446,10 @@ echo '</div>
         <h2>'. $categories .'<span></span></h2>
         <div class="box-content">
           <ul>
-            <li><a href="./index.php?category=All">'. $cat_all .'</a></li>
-            <li><a href="./index.php?category=Clothing">'. $cat_clothing .'</a></li>
-            <li><a href="./index.php?category=Phones">'. $cat_phones .'</a></li>
-            <li class="last"><a href="./index.php?category=Accessories">'. $cat_accessories .'</a></li>
+            <li><a href="./index.php?lang='. $lang .'&category=All">'. $cat_all .'</a></li>
+            <li><a href="./index.php?lang='. $lang .'&category=Clothing">'. $cat_clothing .'</a></li>
+            <li><a href="./index.php?lang='. $lang .'&category=Phones">'. $cat_phones .'</a></li>
+            <li class="last"><a href="./index.php?lang='. $lang .'&category=Accessories">'. $cat_accessories .'</a></li>
           </ul>
         </div>
       </div>
@@ -476,7 +487,10 @@ echo '</div>
   <!-- End Side Full -->
   <!-- Footer -->
   <div id="footer">
-    <p class="left"> <a href="index.php">'. $home .'</a> <span>|</span> <a href="?myaccount=1">'. $account .'</a> <span>|</span> <a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
+    <p class="left">
+		<a href="index.php?lang='. $lang .'">'. $home .'</a> <span>|</span>
+		<a href="?lang='. $lang .'&myaccount=1">'. $account .'</a> <span>|</span>
+		<a href="?lang=en">En</a> <span>|</span> <a href="?lang=ru">Ru</a> </p>
     <p class="right"> &copy; 2018 Shonline. '. $authors .'</p>
   </div>
   <!-- End Footer -->
