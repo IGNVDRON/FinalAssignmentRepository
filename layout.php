@@ -29,7 +29,7 @@ $header = <<<HTML
       <ul>
         <li><a href="#" class="active">Home</a></li>
         <li><a href="#">Support</a></li>
-        <li><a href="#myaccount.php">My Account</a></li>
+        <li><a href="#../FinalAssignmentRepository/myaccount.php">My Account</a></li>
         <li><a href="?lang=en">En</a></li>
         <li><a href="?lang=ru">Ru</a></li>
       </ul>

@@ -7,8 +7,8 @@
 	Signed in.
 	Hello, <?php echo $_SESSION['logged_user']->login; ?>
 	<hr>
-	<a href="logout.php">Sign out</a>
+	<a href="shop/logout.php">Sign out</a>
 	<?php else : ?>
-	<a href="login.php">Authorization</a><br>
-	<a href="signup.php">Registration</a>
+	<a href="../FinalAssignmentRepository/login.php">Authorization</a><br>
+	<a href="/FinalAssignmentRepository/signup.php">Registration</a>
 	<?php endif; ?>
