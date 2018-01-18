@@ -1,6 +1,7 @@
 <?php
 session_start();
 //error_reporting(0);
+$total_price = 0;
 
 // Languages start
 $lang = $_GET['lang'];
@@ -117,6 +118,11 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<style>
+	table{
+		
+	}
+</style>
 </head>
 <body>
 <!-- Shell -->
@@ -126,6 +132,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <h1 id="logo"><a href="./index.php?lang='. $lang .'">Shonline</a></h1>
     <!-- Cart -->
     <div id="cart"><a href="./index.php?lang='. $lang .'&view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
+		<div class="cl">&nbsp;</div>
+		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: '. $total_price .'<strong></strong></span>
 	</strong></span>
 	</div>
     <!-- End Cart -->
@@ -259,7 +267,7 @@ else if(isset($_GET['checkout'])) {
 					<th style='border-bottom:1px solid #000000;'>". $tab_cost ."</th>
 				</tr>";
 
-				$total_price = 0;
+				
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
 					
