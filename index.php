@@ -126,6 +126,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
     <h1 id="logo"><a href="./index.php?lang='. $lang .'">Shonline</a></h1>
     <!-- Cart -->
     <div id="cart"><a href="./index.php?lang='. $lang .'&view_cart=1" class="cart-link">Your Shopping Cart</a> <!-- Open cart -->
+		<div class="cl">&nbsp;</div>
+		<span>Articles: <strong>4</strong></span> &nbsp;&nbsp; <span>Cost: <strong>. $total_price .</strong></span>
 	</strong></span>
 	</div>
     <!-- End Cart -->
