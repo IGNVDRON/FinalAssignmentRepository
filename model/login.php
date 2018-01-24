@@ -1,5 +1,5 @@
 <?php
-	require "db.php";
+	require "../db.php"; // было require
 	
 	$data = $_POST;
 	
@@ -16,7 +16,7 @@
 				//all ok, sign in user
 				
 				$_SESSION['logged_user'] = $user;
-				echo '<div style="color: green;">Authorized. You may go on the <a href="finalassignmentrepository/?lang=en#">title webpage</a> </div><hr>';
+				echo '<div style="color: green;">Authorized. You may go on the <a href="../index.php">title webpage</a> </div><hr>';
 				
 		} else {
 			
@@ -31,24 +31,24 @@
 	  {
 		 echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
 	}
-	
 	}
-?>
-	
-	<form action= "login.php" method="POST">
-	
+
+
+$display_login = <<<HTML
+<form action= 'model/login.php' method='POST'>
 	<p>
 	<p><strong>Login</strong>:</p>
-	<input type="text" name="login" value="<?php echo @$data['login']; ?>">
+	<input type='text' name='login'>
 	</p>
 	
 	<p>
 	<p><strong>Password</strong>:</p>
-	<input type="password" name="password" value="<?php echo @$data['password']; ?>">
+	<input type='password' name='password'>
 	</p>
 	
 	<p>
-		<button type="sumbit" name="do_login">Sign in</button>
+		<button type='sumbit' name='do_login'>Sign in</button>
 	</p>
-	
 </form>
+HTML;
+?>
