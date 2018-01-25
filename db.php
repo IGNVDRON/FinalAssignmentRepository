@@ -1,8 +1,7 @@
 <?php
 
-require "libs/rb.php";
+require_once "libs/rb.php";
 R::setup( 'mysql:host=localhost;dbname=shonline',
         'root', '' );
 		
-
 ?>

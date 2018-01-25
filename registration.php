@@ -1,5 +1,5 @@
 <?php
-	require("../db.php"); // было require
+	require_once('db.php');
 	
 	$data = $_POST;
 	

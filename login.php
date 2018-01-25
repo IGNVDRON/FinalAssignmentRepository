@@ -1,5 +1,5 @@
 <?php
-	require "../db.php"; // было require
+	require_once('db.php');
 	
 	$data = $_POST;
 	
@@ -16,7 +16,7 @@
 				//all ok, sign in user
 				
 				$_SESSION['logged_user'] = $user;
-				echo '<div style="color: green;">Authorized. You may go on the <a href="../index.php">title webpage</a> </div><hr>';
+				echo '<div style="color: green;">Authorized. You may go on the <a href="index.php">title webpage</a> </div><hr>';
 				
 		} else {
 			
@@ -35,7 +35,7 @@
 
 
 $display_login = <<<HTML
-<form action= 'model/login.php' method='POST'>
+<form action= 'login.php' method='POST'>
 	<p>
 	<p><strong>Login</strong>:</p>
 	<input type='text' name='login'>

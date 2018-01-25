@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require("products.php");
 require("view/layout.php");
-require_once("model/login.php");
-require_once("model/registration.php");
+require("products.php");
+require_once("login.php");
+require_once("registration.php");
 //https://ruseller.com/lessons.php?id=347&rub=37 <- как сделать, чтобы пользователь логинился и это запоминалось
 
 
